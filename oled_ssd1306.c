@@ -29,7 +29,7 @@ static void i2c_stop(void)
 static void i2c_addr(void)
 {
     I2C_DR = 0x78;
-    while (!(I2C_SR1 & 0x02));   // ожидание ACK
+    while (!(I2C_SR1 & 0x02));   // ожидание ACK; 0x02 — бит ADDR
     (void)I2C_SR3;               // сброс флага ADDR
 }
 
