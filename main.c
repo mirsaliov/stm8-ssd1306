@@ -10,12 +10,13 @@ void main(void)
 
     CLK_PCKENR1 |= 0x20;
 
-    I2C_CR1 &= ~0x01;
-    I2C_FREQR  = 0x10;
-    I2C_CCRL   = 0x50;
+    I2C_CR1 &= ~0x01;   // отключение I2C перед конфигурацией
+    I2C_FREQR  = 0x10;  // частота тактирования APB = 16 МГц
+    I2C_CCRL   = 0x50;  // установка скорости I2C (Standard mode ~100 кГц)
     I2C_CCRH   = 0x00;
-    I2C_TRISER = 0x11;
-    I2C_CR1 |= 0x01;
+    I2C_TRISER = 0x11;  // максимальное время нарастания сигнала
+    I2C_CR1 |= 0x01;    // включение модуля I2C
+
 
     while (I2C_SR3 & 0x02);
 
