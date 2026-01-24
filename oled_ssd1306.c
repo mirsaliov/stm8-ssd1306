@@ -111,18 +111,18 @@ void oled_init(void)
     for (d = 0; d < 20000; d++);   // задержка после подачи питания
 
     oled_cmd(0xAE);   // дисплей выключен
-    oled_cmd(0xD5); oled_cmd(0x80);
-    oled_cmd(0xA8); oled_cmd(0x3F);
-    oled_cmd(0xD3); oled_cmd(0x00);
-    oled_cmd(0x40);
+    oled_cmd(0xD5); oled_cmd(0x80); // Установка частоты тактирования дисплея
+    oled_cmd(0xA8); oled_cmd(0x3F); //Установка высоты дисплея
+    oled_cmd(0xD3); oled_cmd(0x00); //Вертикальное смещение изображения
+    oled_cmd(0x40); // Установка начальной строки отображения
     oled_cmd(0x8D); oled_cmd(0x14);   // включение charge pump
     oled_cmd(0x20); oled_cmd(0x02);   // постраничная адресация
-    oled_cmd(0xA1);
-    oled_cmd(0xC8);
-    oled_cmd(0xDA); oled_cmd(0x12);
+    oled_cmd(0xA1); //Отражение по горизонтали
+    oled_cmd(0xC8); // Отражение по вертикали
+    oled_cmd(0xDA); oled_cmd(0x12); // Настройка конфигурации COM-выводов
     oled_cmd(0x81); oled_cmd(0x7F);   // установка контраста
-    oled_cmd(0xD9); oled_cmd(0xF1);
-    oled_cmd(0xDB); oled_cmd(0x40);
+    oled_cmd(0xD9); oled_cmd(0xF1) //Настройка фаз зарядки (pre-charge period);
+    oled_cmd(0xDB); oled_cmd(0x40); //Уровень VCOMH
     oled_cmd(0xA6);   // нормальный режим
     oled_cmd(0xAF);   // дисплей включен
 }
